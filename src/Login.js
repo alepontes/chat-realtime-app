@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom'
 
 export default class Login extends React.Component {
 
@@ -12,6 +13,11 @@ export default class Login extends React.Component {
         return (
             <div>
                 <p>Login Screen</p>
+                <ul>
+                    <li>
+                        <Link to="/chat">Ir para Chat</Link>
+                    </li>
+                </ul>
             </div>
         );
     }
