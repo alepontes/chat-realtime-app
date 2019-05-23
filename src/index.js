@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 import Login from './Login/Login';
+import Chat from './Chat/Chat';
 
 const routing = (
     <Router>
         <div>
             <Route exact path="/" component={Login} />
-            <Route path="/chat" component={App} />
+            <Route path="/chat" component={Chat} />
         </div>
     </Router>
 )

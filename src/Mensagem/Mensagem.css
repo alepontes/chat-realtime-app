@@ -1,0 +1,30 @@
+
+.Mensagem {
+    display: flex;
+    flex-direction: column;
+    border: 1px black solid;
+    width: 400px;
+    /* height: 100px; */
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.Name {
+    /* background-color: aqua; */
+    margin: 0px;
+    padding: 0px;
+}
+
+.Text {
+    /* background-color: blue; */
+    margin: 0px;
+    padding: 13px 5px;
+}
+
+.Date {
+    /* background-color: blueviolet; */
+    margin: 0px;
+    right: 0px;
+    padding: 0px;
+    bottom: 0px;
+}

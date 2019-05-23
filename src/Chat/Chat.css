@@ -1,0 +1,36 @@
+
+.Chat{
+    
+}
+
+.Painel{
+    border: 1px black solid;
+    padding: 10px 20px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Feed{
+    height: 450px;
+    width: 100%;
+    justify-self: center;
+    border: 1px black solid;
+
+}
+
+.Lorem {
+    display: inline;
+    flex-direction: row;
+}
+
+.Enviar {
+    border-radius: 25px;
+    border: 1px black solid;
+    padding: 5px 20px;
+}
+
+.Input {
+    width: 90%;
+    bottom: 0;
+    margin-right: 10px;
+}
