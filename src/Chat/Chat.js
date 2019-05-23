@@ -19,11 +19,13 @@ export default class Login extends React.Component {
             response: '',
             msg: [],
         }
+
     }
 
 
     componentDidMount() {
-        socket.on('recivedMensage', msg => this._newMensage(msg))
+        socket.on('previusMenssage', msg => msg.map(item => this._newMenssage(item)))
+        socket.on('recivedMenssage', msg => this._newMenssage(msg))
         this.scrollToBottom();
     }
 
@@ -75,28 +77,28 @@ export default class Login extends React.Component {
             return
 
 
-        const mensage = {
+        const menssage = {
             name: "Alexandre",
             text: this.state.input,
             date: "Terça",
         };
 
 
-        this._newMensage(mensage, true)
-        socket.emit("sendMensage", mensage)
+        socket.emit("sendMenssage", menssage)
+        this._newMenssage(menssage, true)
 
 
         this.setState({ input: '' })
 
     }
 
-    _newMensage(mensage, me = false) {
+    _newMenssage(menssage, me = false) {
 
-        mensage.me = me;
+        menssage.me = me;
 
         const msg = [
             ...this.state.msg,
-            mensage,
+            menssage,
         ]
 
         this.setState({ msg })
