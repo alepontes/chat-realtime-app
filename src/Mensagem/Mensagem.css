@@ -1,23 +1,17 @@
 
 .Mensagem {
-    display: flex;
+    display: inline;
     flex-direction: column;
     border: 1px black solid;
     width: 400px;
     /* height: 100px; */
     margin: 5px;
     padding: 5px 10px;
-    float: right;
+    float: left;
 }
 
 .Me {
-    display: flex;
-    flex-direction: column;
     border: 1px blueviolet solid;
-    width: 400px;
-    /* height: 100px; */
-    margin: 5px;
-    padding: 5px 10px;
     float: left;
 }
 

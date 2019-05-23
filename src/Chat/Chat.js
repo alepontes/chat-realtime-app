@@ -18,46 +18,22 @@ export default class Login extends React.Component {
             input: '',
             response: '',
             msg: [],
-            _msg: [
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-                {
-                    "name": "Alexandre",
-                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
-                    "date": "qui, 10:30",
-                },
-            ],
         }
     }
 
 
     componentDidMount() {
         socket.on('recivedMensage', msg => this._newMensage(msg))
+        this.scrollToBottom();
     }
 
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
 
 
     render() {
@@ -65,8 +41,11 @@ export default class Login extends React.Component {
             <div className="Chat">
                 <nav className="Nav">Alexandre Pontes</nav>
                 <div className="Painel">
-                    <div className="Feed">
+                    <div className="Feed" onScroll={({ nativeEvent }) => { }}>
                         {this.state.msg.map(msg => <Mensagem msg={msg} />)}
+                        <div style={{ float: "left", clear: "both" }}
+                            ref={(el) => { this.messagesEnd = el; }}>
+                        </div>
                     </div>
                     <div className="Lorem">
                         <input className="Input"
