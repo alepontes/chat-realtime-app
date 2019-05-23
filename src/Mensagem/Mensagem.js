@@ -7,20 +7,22 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        const { name, text, date } = props.msg
+        const { name, text, date, me } = props.msg
 
         this.state = {
             name,
             text,
-            date
+            date,
+            me,
         }
     }
 
 
     render() {
         return (
-            <div className="Mensagem">
-                <p className="Name">{this.state.name}</p>
+            // <div className="Mensagem">
+            <div className={this.state.me ? "Me" : "Mensagem"}>
+                <p className="Name" >{this.state.name}</p>
                 <p className="Text">{this.state.text}</p>
                 <p className="Date">{this.state.date}</p>
             </div>
