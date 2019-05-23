@@ -3,6 +3,14 @@
     
 }
 
+.Nav {
+    /* display: inline; */
+    border: 1px black solid;
+    padding: 10px 20px;
+    /* float: right; */
+    /* position: static; */
+}
+
 .Painel{
     border: 1px black solid;
     padding: 10px 20px;
@@ -11,11 +19,15 @@
 }
 
 .Feed{
-    height: 450px;
+    display: flex;
+    flex-direction: column;
+    
+    height: 550px;
+    /* height: 50%; */
     width: 100%;
     justify-self: center;
-    border: 1px black solid;
-
+    /* border: 1px black solid; */
+    overflow: scroll;
 }
 
 .Lorem {

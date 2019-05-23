@@ -7,13 +7,7 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
 
-        // const {name, text, date} = props.msg
-
-
-        const name = "Alexandre"
-        const text = "Lorem ipsum dolor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor"
-        const date = "qui, 10:30"
-
+        const { name, text, date } = props.msg
 
         this.state = {
             name,

@@ -13,7 +13,38 @@ export default class Login extends React.Component {
 
         this.state = {
             input: '',
-            msg: [],
+            msg: [
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+                {
+                    "name": "Alexandre",
+                    "text": "Lorem ipsum olor sit amet constructor ipsum dolor sit amet constructo ipsum dolor sit amet constructor ipsum dolor sit amet constructor ipsum dolor sit amet constructor",
+                    "date": "qui, 10:30",
+                },
+            ],
         }
     }
 
@@ -21,14 +52,11 @@ export default class Login extends React.Component {
     render() {
         return (
             <div className="Chat">
-                <nav>Lorem Nav</nav>
+                <nav className="Nav">Alexandre Pontes</nav>
                 <div className="Painel">
-                    {/* <div className="Feed">
-                        {this.state.text.map(msg => (<p>{msg}}</p>))}
-                    </div> */}
-                    <Mensagem />
-                    <Mensagem />
-                    <Mensagem />
+                    <div className="Feed">
+                        {this.state.msg.map(msg => <Mensagem msg={msg} />)}
+                    </div>
                     <div className="Lorem">
                         <input className="Input"
                             placeholder="Mensagem"
@@ -39,7 +67,6 @@ export default class Login extends React.Component {
                         />
                         <button className="Enviar" onClick={() => this._sendMensage()}>Enviar</button>
                     </div>
-
                 </div>
             </div>
         );
