@@ -81,10 +81,15 @@ export default class Login extends React.Component {
             name: "Alexandre",
             text: this.state.input,
             date: "Terça",
+            token: "tokenAA",
         };
 
+        const a = {
+            Authorization: "LoremToken"
+        }
 
-        socket.emit("sendMenssage", menssage)
+
+        socket.emit("sendMenssage", menssage, a)
         this._newMenssage(menssage, true)
 
 
