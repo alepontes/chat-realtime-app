@@ -1,7 +1,7 @@
 import React from 'react';
 import './Mensagem.css'
 
-export default class Login extends React.Component {
+export default class Mensagem extends React.Component {
 
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {

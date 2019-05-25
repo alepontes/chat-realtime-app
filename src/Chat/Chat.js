@@ -4,10 +4,15 @@ import './Chat.css'
 import socketIOClient from "socket.io-client";
 import Mensagem from '../Mensagem/Mensagem'
 
+import { bindActionCreators } from 'redux';
+
+import * as accountActions from '../actions/account';
+import { connect } from 'react-redux';
+
 const endpoint = "http://127.0.0.1:8000"
 const socket = socketIOClient(endpoint);
 
-export default class Login extends React.Component {
+class Chat extends React.Component {
 
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
@@ -39,9 +44,10 @@ export default class Login extends React.Component {
 
 
     render() {
+
         return (
             <div className="Chat">
-                <nav className="Nav">Alexandre Pontes</nav>
+                <nav className="Nav">{this.props.account.name}</nav>
                 <div className="Painel">
                     <div className="Feed" onScroll={({ nativeEvent }) => { }}>
                         {this.state.msg.map(msg => <Mensagem msg={msg} />)}
@@ -78,10 +84,10 @@ export default class Login extends React.Component {
 
 
         const menssage = {
-            name: "Alexandre",
+            name: this.props.account.name,
             text: this.state.input,
             date: "Terça",
-            token: "tokenAA",
+            token: this.props.account.token,
         };
 
         const a = {
@@ -110,3 +116,16 @@ export default class Login extends React.Component {
 
     }
 }
+
+
+const mapStateToProps = state => ({
+    account: state.account,
+})
+
+
+const mapDispatchToProps = dispath =>
+    bindActionCreators(accountActions, dispath)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat)
+
