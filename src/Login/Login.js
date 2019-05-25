@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Login.css';
 
 import { bindActionCreators } from 'redux';
@@ -19,6 +19,7 @@ class Login extends React.Component {
             name: 'Ale',
             pass: '123',
             err: false,
+            login: false,
         }
 
 
@@ -48,7 +49,7 @@ class Login extends React.Component {
                         value={this.state.pass}
                     />
                     <button className="Button" onClick={() => this._login()} >Fazer Login</button>
-                    {/* <Link className="Button" to="/chat">Fazer Login</Link> */}
+                    {this.state.login && <Redirect to='/chat' />}
                 </div>
             </div>
         );
@@ -79,6 +80,8 @@ class Login extends React.Component {
 
             body.token = data.token
             this.props.login(body)
+            this.setState({ err: false })
+            this.setState({ login: true })
 
         });
 
