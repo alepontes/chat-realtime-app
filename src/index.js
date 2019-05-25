@@ -8,13 +8,19 @@ import App from './App';
 import Login from './Login/Login';
 import Chat from './Chat/Chat';
 
+
+import { Provider } from 'react-redux';
+import store from './store'
+
 const routing = (
-    <Router>
-        <div>
-            <Route exact path="/" component={Login} />
-            <Route path="/chat" component={Chat} />
-        </div>
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <div>
+                <Route exact path="/" component={Login} />
+                <Route path="/chat" component={Chat} />
+            </div>
+        </Router>
+    </Provider>
 )
 
 ReactDOM.render(routing, document.getElementById('root'));

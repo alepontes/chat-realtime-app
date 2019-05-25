@@ -1,9 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import './Login.css'
+import { Link } from 'react-router-dom';
+import './Login.css';
+
+import { bindActionCreators } from 'redux';
+
+import * as accountActions from '../actions/account';
+import { connect } from 'react-redux';
 
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
     // eslint-disable-next-line no-useless-constructor
     constructor(props) {
@@ -11,8 +16,8 @@ export default class Login extends React.Component {
 
 
         this.state = {
-            name: '',
-            pass: '',
+            name: 'Ale',
+            pass: '123',
             err: false,
         }
 
@@ -72,12 +77,23 @@ export default class Login extends React.Component {
             if (data.err === "Conta Inexistente")
                 return this.setState({ err: true })
 
-            //Add no Redux
-            console.log(data)
-            // data.token
+            body.token = data.token
+            this.props.login(body)
 
         });
 
     }
 
 }
+
+const mapStateToProps = state => ({
+    account: state.account,
+})
+
+
+const mapDispatchToProps = dispath =>
+    bindActionCreators(accountActions, dispath)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
+
