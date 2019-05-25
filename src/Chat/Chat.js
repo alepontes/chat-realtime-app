@@ -21,7 +21,7 @@ class Chat extends React.Component {
 
 
         this.state = {
-            isLogged: true,
+            isLogged: !!this.props.account.token,
             input: '',
             response: '',
             msg: [],
@@ -29,16 +29,12 @@ class Chat extends React.Component {
 
     }
 
-    componentWillMount() {
-
-        if (!this.props.account.token)
-            this.setState({ isLogged: false })
-
-    }
-
 
     componentDidMount() {
-        socket.emit('Hello', { name: this.props.account.name })
+
+        if (this.state.isLogged)
+            socket.emit('Hello', { name: this.props.account.name })
+
         socket.on('newConnection', data => this._newConnection(data))
         socket.on('previusMenssage', msg => msg.map(item => this._newMenssage(item)))
         socket.on('recivedMenssage', msg => this._newMenssage(msg))
