@@ -1,4 +1,18 @@
 
+
+.newConnection {
+    margin: 5px 30px;
+    border: 1px black solid;
+    border-radius: 20px;
+    display: inline;
+}
+
+.newConnection p {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
 .Left {
     display: flex;
     justify-content: flex-start;
@@ -8,7 +22,6 @@
     display: flex;
     justify-content: flex-end;
 }
-
 
 .Mensagem {
     display: inline;

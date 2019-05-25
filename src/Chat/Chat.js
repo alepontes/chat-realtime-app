@@ -2,7 +2,8 @@ import React from 'react';
 // import { Link } from 'react-router-dom'
 import './Chat.css'
 import socketIOClient from "socket.io-client";
-import Mensagem from '../Mensagem/Mensagem'
+import Mensagem from '../Mensagem/Mensagem';
+import { Redirect } from 'react-router-dom';
 
 import { bindActionCreators } from 'redux';
 
@@ -20,6 +21,7 @@ class Chat extends React.Component {
 
 
         this.state = {
+            isLogged: true,
             input: '',
             response: '',
             msg: [],
@@ -27,8 +29,17 @@ class Chat extends React.Component {
 
     }
 
+    componentWillMount() {
+
+        if (!this.props.account.token)
+            this.setState({ isLogged: false })
+
+    }
+
 
     componentDidMount() {
+        socket.emit('Hello', { name: this.props.account.name })
+        socket.on('newConnection', data => this._newConnection(data))
         socket.on('previusMenssage', msg => msg.map(item => this._newMenssage(item)))
         socket.on('recivedMenssage', msg => this._newMenssage(msg))
         this.scrollToBottom();
@@ -47,6 +58,7 @@ class Chat extends React.Component {
 
         return (
             <div className="Chat">
+                {!this.state.isLogged && <Redirect to='/' />}
                 <nav className="Nav">{this.props.account.name}</nav>
                 <div className="Painel">
                     <div className="Feed" onScroll={({ nativeEvent }) => { }}>
@@ -114,6 +126,16 @@ class Chat extends React.Component {
 
         this.setState({ msg })
 
+    }
+
+    _newConnection(connection, me = false) {
+
+        const msg = [
+            ...this.state.msg,
+            connection,
+        ]
+
+        this.setState({ msg })
     }
 }
 

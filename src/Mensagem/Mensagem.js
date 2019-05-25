@@ -20,12 +20,18 @@ export default class Mensagem extends React.Component {
 
     render() {
 
-        console.log("Me: " + this.state.me)
+        if (this.props.msg.newConnection)
+            return (
+                <div className="newConnection">
+                    <p>{this.props.msg.newConnection.name} se conectou</p>
+                </div>
+            );
+
 
         return (
             <div className={this.state.me ? "Right" : "Left"}>
                 <div className={this.state.me ? "Mensagem Me" : "Mensagem"}>
-                    <p className="Name" >{this.state.name}</p>
+                    {!this.state.me && <p className="Name" >{this.state.name}</p>}
                     <p className="Text">{this.state.text}</p>
                     <p className="Date">{this.state.date}</p>
                 </div>
