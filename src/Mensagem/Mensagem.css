@@ -1,4 +1,15 @@
 
+.Left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 .Mensagem {
     display: inline;
     flex-direction: column;
@@ -6,7 +17,6 @@
     width: 400px;
     margin: 5px;
     padding: 5px 10px;
-    float: left;
 }
 
 .Me {
