@@ -4,7 +4,7 @@ import './Chat.css'
 import socketIOClient from "socket.io-client";
 import Mensagem from '../Mensagem/Mensagem';
 import { Redirect } from 'react-router-dom';
-
+import moment from 'moment'
 import { bindActionCreators } from 'redux';
 
 import * as accountActions from '../actions/account';
@@ -36,7 +36,11 @@ class Chat extends React.Component {
             socket.emit('Hello', { name: this.props.account.name })
 
         socket.on('newConnection', data => this._newConnection(data))
-        socket.on('previusMenssage', msg => msg.map(item => this._newMenssage(item)))
+        // socket.on('previusMenssage', msg => msg.map(item => this._newMenssage(item)))
+        socket.on('previusMenssage', msg => {
+            console.log("MSG Pre")
+            console.log(msg)
+        })
         socket.on('recivedMenssage', msg => this._newMenssage(msg))
         this.scrollToBottom();
     }
@@ -90,11 +94,10 @@ class Chat extends React.Component {
         if (!this.state.input.trim())
             return
 
-
         const menssage = {
             name: this.props.account.name,
             text: this.state.input,
-            date: "Terça",
+            date: moment().subtract(10, 'days').calendar(),
             token: this.props.account.token,
         };
 
